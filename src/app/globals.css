@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  /* Neutrals */
+  --color-ink: #0c1726;
+  --color-ink-soft: #243349;
+  --color-muted: #5b677c;
+  --color-line: #e4e9f0;
+  --color-surface: #ffffff;
+  --color-surface-2: #f6f8fb;
+  --color-surface-3: #eef2f7;
+
+  /* Brand */
+  --color-brand: #14467a;
+  --color-brand-700: #0f3a66;
+  --color-brand-600: #1a5494;
+  --color-brand-500: #2f6fb3;
+  --color-brand-50: #eef4fb;
+
+  /* Accent (used sparingly) */
+  --color-accent: #e08a2b;
+  --color-accent-soft: #f4d9b6;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --radius-card: 16px;
+}
+
+:root {
+  --color-muted: #5b677c;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle section dot-grid motif for "operational" feel */
+.bg-grid {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(20, 70, 122, 0.06) 1px,
+    transparent 0
+  );
+  background-size: 22px 22px;
+}
+
+::selection {
+  background-color: var(--color-brand);
+  color: #fff;
+}
