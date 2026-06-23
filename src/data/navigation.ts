@@ -8,6 +8,7 @@ export const mainNav: NavLink[] = [
   { label: "The Shortlist", href: "/shortlist" },
   { label: "AI Employee", href: "/ai-employee" },
   { label: "AI Employee V2", href: "/ai-employee-v2" },
+  { label: "AI Hire", href: "/ai-hire" },
   { label: "Examples", href: "/examples" },
   { label: "Reel Axis vs DIY", href: "/reel-axis-vs-diy" },
   { label: "About", href: "/about" },
@@ -16,6 +17,7 @@ export const mainNav: NavLink[] = [
 
 export const footerServices: NavLink[] = [
   { label: "The Shortlist", href: "/shortlist" },
+  { label: "AI Hire", href: "/ai-hire" },
   { label: "AI Employee", href: "/ai-employee" },
   { label: "Examples", href: "/examples" },
   { label: "Reel Axis vs DIY", href: "/reel-axis-vs-diy" },
