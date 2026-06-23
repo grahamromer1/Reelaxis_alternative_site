@@ -20,7 +20,7 @@ export function Navbar() {
         <nav className="flex h-16 items-center justify-between" aria-label="Main">
           <Logo />
 
-          <ul className="hidden items-center gap-0.5 lg:flex">
+          <ul className="hidden items-center gap-0.5 xl:flex">
             {mainNav.map((link) => (
               <li key={link.href}>
                 <Link
@@ -37,7 +37,7 @@ export function Navbar() {
             ))}
           </ul>
 
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <Link
               href={primaryCta.href}
               className="inline-flex items-center rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-700"
@@ -49,7 +49,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-ink lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-ink xl:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label="Toggle navigation menu"
@@ -66,7 +66,7 @@ export function Navbar() {
       </Container>
 
       {open ? (
-        <div id="mobile-menu" className="border-t border-line bg-surface lg:hidden">
+        <div id="mobile-menu" className="border-t border-line bg-surface xl:hidden">
           <Container className="py-4">
             <ul className="space-y-1">
               {mainNav.map((link) => (
