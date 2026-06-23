@@ -1,11 +1,11 @@
 // Content for the AI Hire page — the "fractional AI builder you hire" spine.
 // Reframes the V2 concept: Reel Axis is the hire (the builder), not the bot.
 
-export const aiHireCta = { pilot: "/contact", plans: "#plans" };
+export const aiHireCta = { start: "/contact", plans: "#plans" };
 
 export const aiHireHero = {
   whoFor:
-    "Built for owner-run businesses of 3–25 who know AI matters but have no one to build it.",
+    "Built for solo operators and teams of 1–20 who know AI matters but have no one to build it.",
   trust:
     "Everything we build runs in your own tools and stays yours — we're your builder, not a service you're locked into.",
 };
@@ -14,19 +14,6 @@ export const theGap = {
   title: "You know AI matters. You just have no one to build it.",
   body:
     "A full-time AI hire is a $150K bet you can't justify yet. Reel Axis is that hire — by the build. We scope the highest-value job, build it into your own tools, prove it on a number you already count, and keep it running.",
-};
-
-export const pilot = {
-  price: "$500",
-  body:
-    "Your first build — a trial run with your AI hire. We build one real workflow for you and prove it on a number you already track. Love it and the $500 credits toward your first month. No countdown, no lock-in.",
-  note: "One-time — credits toward your first month.",
-  points: [
-    "We build it — you do nothing",
-    "Proven on one number, from your own data",
-    "Lives in your tools and stays yours",
-    "The $500 credits toward your plan",
-  ],
 };
 
 export type BuildSize = { size: string; test: string; example: string };
@@ -59,32 +46,26 @@ export type Plan = {
   cadence: string;
   line: string;
   best: string;
-  note?: string;
+  cta: string;
   badge?: string;
   featured?: boolean;
 };
 export const plans: Plan[] = [
   {
-    name: "Light",
-    price: "$500",
-    cadence: "/mo",
-    line: "Your first system, then one improvement a month.",
-    best: "Get started done-for-you, without the big commitment.",
-    note: "Different from the one-time $500 Pilot — this is your ongoing plan after it.",
-  },
-  {
     name: "Starter",
-    price: "$1,500",
+    price: "$1,000",
     cadence: "/mo",
-    line: "Steady progress — a build every couple of weeks.",
-    best: "A first real system across one part of the business.",
+    line: "Your first workflow, then steady improvements.",
+    best: "Get one real outcome live and growing.",
+    cta: "Start with one workflow",
   },
   {
     name: "Operator",
-    price: "$3,500",
+    price: "$2,500",
     cadence: "/mo",
-    line: "A build a week — real momentum.",
-    best: "Ongoing builds across sales, ops, and admin.",
+    line: "A new workflow every couple of weeks.",
+    best: "Ongoing outcomes across sales, ops, and admin.",
+    cta: "Start with Operator",
     badge: "Most popular",
     featured: true,
   },
@@ -92,8 +73,17 @@ export const plans: Plan[] = [
     name: "Department",
     price: "$7,500",
     cadence: "/mo",
-    line: "A team's worth — multiple builds or a big system each month.",
-    best: "AI across several departments at once.",
+    line: "A team's worth — multiple workflows or a big system each month.",
+    best: "AI outcomes across several departments at once.",
+    cta: "Talk to us",
+  },
+  {
+    name: "Custom",
+    price: "Custom",
+    cadence: "",
+    line: "Multi-department rollouts, deep integrations, bespoke systems.",
+    best: "When the work outgrows a plan.",
+    cta: "Let's scope it",
   },
 ];
 
@@ -144,15 +134,15 @@ export const aiHireFaqs: Faq[] = [
   },
   {
     q: "How do you prove ROI if my outcome is hard to measure?",
-    a: "We start the Pilot on a job whose result you already count — booked calls, recovered no-shows, hours saved. We measure it on your own data and hand you a worksheet so the dollar value uses your numbers, not ours. We never promise a figure we can't show.",
+    a: "We start with one workflow whose result you already count — booked calls, recovered no-shows, hours saved. We measure it on your own data and hand you a worksheet so the dollar value uses your numbers, not ours. We never promise a figure we can't show.",
   },
   {
     q: "Do I have to manage anything or pick from a menu each month?",
     a: "No. On a short monthly roadmap call we recommend the highest-value build and handle the rest. You approve; we build. Nothing to operate.",
   },
   {
-    q: "What happens after the Pilot?",
-    a: "If it worked, the $500 credits toward your first month and you pick a plan — or stay light. If it didn't, you walk, no lock-in.",
+    q: "How do we get started?",
+    a: "A short roadmap call. We pick the highest-value workflow, agree on the one number it should move, and build it. From there you pick the plan that fits the cadence you want — month-to-month, no lock-in.",
   },
 ];
 
@@ -176,8 +166,8 @@ export const journey: Phase[] = [
     num: "01",
     name: "Audit & Connect",
     headline: "We find where AI actually pays.",
-    body: "We map how your business runs, wire up your tools and data, and ship your first build — proven on a number you already track.",
-    get: "A map of your best AI opportunities, plus your first build, live.",
+    body: "We map how your business runs, wire up your tools and data, and ship your first workflow — proven on a number you already track.",
+    get: "A map of your best AI opportunities, plus your first workflow, live.",
     feeling: "Someone finally gets my business and shows me where to start.",
   },
   {

@@ -11,7 +11,6 @@ import {
   aiHireCta,
   aiHireHero,
   theGap,
-  pilot,
   buildSizes,
   plans,
   proofTypes,
@@ -25,7 +24,7 @@ import {
 export const metadata: Metadata = {
   title: "AI Hire — The AI Tech Team Your Business Needs",
   description:
-    "Reel Axis is the fractional AI builder you hire — the AI tech team a growing business needs but can't justify full-time. We build practical AI that lives in your business. Start with a $500 Pilot.",
+    "Reel Axis is the fractional AI builder you hire — the AI tech team a growing business needs but can't justify full-time. We build practical AI workflows that live in your business and deliver real outcomes. Start with one workflow.",
 };
 
 export default function AiHirePage() {
@@ -39,11 +38,11 @@ export default function AiHirePage() {
             <span className="text-brand">without the full-time hire.</span>
           </>
         }
-        subtitle="We build practical AI that lives in your business and does real work — one job at a time. Start with a $500 Pilot, proven on a number you already track."
+        subtitle="We build practical AI workflows that live in your business and deliver real outcomes — one job at a time. Start with a single workflow, proven on a number you already track."
         microcopy={aiHireHero.trust}
       >
-        <CTAButton href={aiHireCta.pilot} variant="primary" className="group">
-          Start with a $500 Pilot
+        <CTAButton href={aiHireCta.start} variant="primary" className="group">
+          Start with one workflow
         </CTAButton>
         <CTAButton href={aiHireCta.plans} variant="secondary" className="group">
           See the plans
@@ -74,49 +73,6 @@ export default function AiHirePage() {
         </Container>
       </section>
 
-      {/* The Pilot */}
-      <section className="bg-surface-2 py-16 sm:py-20">
-        <Container>
-          <div className="overflow-hidden rounded-3xl bg-ink text-white">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="p-8 sm:p-12">
-                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500">
-                  Start here · The Pilot
-                </p>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-bold tracking-tight">{pilot.price}</span>
-                  <span className="text-sm text-white/60">your first build, done for you</span>
-                </div>
-                <p className="mt-5 text-base leading-relaxed text-white/75">{pilot.body}</p>
-                <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-brand-500">
-                  {pilot.note}
-                </p>
-                <div className="mt-6">
-                  <CTAButton href={aiHireCta.pilot} variant="primary" className="group">
-                    Start your Pilot
-                  </CTAButton>
-                </div>
-              </div>
-              <div className="border-t border-white/10 bg-white/5 p-8 sm:p-12 lg:border-l lg:border-t-0">
-                <p className="text-xs font-semibold uppercase tracking-wide text-white/50">
-                  What you get
-                </p>
-                <ul className="mt-5 space-y-4">
-                  {pilot.points.map((p) => (
-                    <li key={p} className="flex items-start gap-3 text-sm text-white/90">
-                      <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-brand text-[11px] font-bold text-white">
-                        ✓
-                      </span>
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
       {/* What's a build */}
       <section className="py-16 sm:py-20">
         <Container>
@@ -124,8 +80,8 @@ export default function AiHirePage() {
             <div className="lg:col-span-5">
               <SectionHeader
                 eyebrow="The unit of work"
-                title="What's a “build”?"
-                description="One business job, done for you and kept running. Under the hood it's made of skills (what the AI knows how to do), connectors (how it reaches into your tools), and your context. You don't buy parts — you buy the finished job."
+                title="What's a build?"
+                description="One business job — an outcome we build and run as a workflow inside your tools. Under the hood it's skills, connectors, and your context wired together. You don't buy parts — you buy the finished outcome."
               />
             </div>
             <div className="lg:col-span-7">
@@ -217,8 +173,8 @@ export default function AiHirePage() {
         <Container>
           <SectionHeader
             eyebrow="Plans"
-            title="Grow by builds, not credits"
-            description="Each plan is a steady cadence of done-for-you builds. On a short monthly roadmap call we pick the highest-value one — you approve, we build."
+            title="Grow by workflows, not credits"
+            description="Each plan is a steady cadence of done-for-you workflows — real outcomes, built and run for you. On a short monthly roadmap call we pick the highest-value one; you approve, we build."
             align="center"
             className="mx-auto"
           />
@@ -242,29 +198,24 @@ export default function AiHirePage() {
                 </div>
                 <div className="mt-3 flex items-baseline gap-1">
                   <span className="text-3xl font-bold tracking-tight text-ink">{plan.price}</span>
-                  <span className="text-sm text-muted">{plan.cadence}</span>
+                  {plan.cadence ? <span className="text-sm text-muted">{plan.cadence}</span> : null}
                 </div>
                 <p className="mt-3 text-sm font-medium text-ink-soft">{plan.line}</p>
                 <p className="mt-2 text-sm text-muted">{plan.best}</p>
-                {plan.note ? (
-                  <p className="mt-3 rounded-lg bg-surface-2 px-3 py-2 text-xs leading-relaxed text-muted">
-                    {plan.note}
-                  </p>
-                ) : null}
                 <div className="mt-auto pt-5">
                   <CTAButton
-                    href={aiHireCta.pilot}
+                    href={aiHireCta.start}
                     variant={plan.featured ? "primary" : "secondary"}
                     className="group w-full"
                   >
-                    {plan.name === "Light" ? "Start light" : "Talk to us"}
+                    {plan.cta}
                   </CTAButton>
                 </div>
               </div>
             ))}
           </div>
           <p className="mt-6 text-center text-xs text-muted">
-            Every plan starts with the $500 Pilot — proven on one number before you commit.
+            Every plan starts with one workflow — proven on a number you already track. Month-to-month, no lock-in.
           </p>
         </Container>
       </section>
@@ -368,9 +319,9 @@ export default function AiHirePage() {
 
       <CTASection
         title="Hire the AI tech team you can't afford full-time."
-        description="Start with a $500 Pilot — one build, done for you, proven on a number you already track. It lives in your business and stays yours."
-        ctaLabel="Start with a $500 Pilot"
-        ctaHref={aiHireCta.pilot}
+        description="Start with one workflow — a real outcome, done for you and proven on a number you already track. It lives in your business and stays yours."
+        ctaLabel="Start with one workflow"
+        ctaHref={aiHireCta.start}
       />
     </>
   );
