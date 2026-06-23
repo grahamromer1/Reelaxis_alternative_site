@@ -16,8 +16,9 @@ import {
   plans,
   proofTypes,
   menuReassurance,
-  sizeLabel,
-  sizeLegend,
+  journeyIntro,
+  journey,
+  playbook,
   aiHireFaqs,
 } from "@/data/aiHire";
 
@@ -156,6 +157,61 @@ export default function AiHirePage() {
         </Container>
       </section>
 
+      {/* How we grow with you — the journey */}
+      <section className="bg-ink py-16 text-white sm:py-20">
+        <Container>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-500">
+            How we grow with you
+          </p>
+          <h2 className="max-w-4xl text-2xl font-bold tracking-tight sm:text-3xl md:text-[2.5rem] md:leading-tight">
+            {journeyIntro.headline}
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70">
+            {journeyIntro.sub}
+          </p>
+
+          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {journey.map((p) => (
+              <div key={p.num} className="flex flex-col rounded-2xl border border-white/12 bg-white/[0.04] p-6">
+                <div className="flex items-center gap-2.5">
+                  <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-brand text-sm font-bold text-white">
+                    {p.num}
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-wide text-brand-500">
+                    {p.name}
+                  </span>
+                </div>
+                <h3 className="mt-4 text-base font-bold leading-snug text-white">{p.headline}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/65">{p.body}</p>
+                <div className="mt-4 rounded-lg border border-white/10 bg-ink/40 p-3">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-white/40">
+                    What you get
+                  </p>
+                  <p className="mt-1 text-xs leading-relaxed text-white/75">{p.get}</p>
+                </div>
+                <p className="mt-auto pt-4 text-sm italic leading-relaxed text-brand-500">
+                  &ldquo;{p.feeling}&rdquo;
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* The AI Playbook deliverable */}
+          <div className="mt-6 flex flex-col gap-4 rounded-2xl bg-brand p-6 sm:flex-row sm:items-center sm:gap-6 sm:p-7">
+            <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-white/15">
+              <FunctionIcon slug="brain" className="h-6 w-6" />
+            </span>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-50">
+                Your deliverable
+              </p>
+              <h3 className="mt-0.5 text-lg font-bold text-white">{playbook.title}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-white/85">{playbook.body}</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* Plans */}
       <section id="plans" className="scroll-mt-20 bg-surface-2 py-16 sm:py-20">
         <Container>
@@ -213,85 +269,51 @@ export default function AiHirePage() {
         </Container>
       </section>
 
-      {/* The menu */}
+      {/* What we build — simple area tiles */}
       <section className="py-16 sm:py-20">
         <Container>
           <SectionHeader
-            eyebrow="The menu"
-            title="What we build"
-            description="Pick by the result you want. Every build shows its size, and a ⭐ marks where most businesses start."
+            eyebrow="What we build"
+            title="The areas we build in"
+            description={menuReassurance}
           />
-          <div className="mt-6 rounded-xl border border-line bg-brand-50 px-4 py-3 text-sm text-ink-soft">
-            {menuReassurance}
-          </div>
-          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 rounded-xl border border-line bg-surface-2 px-4 py-3">
-            {sizeLegend.map((l) => (
-              <span key={l.label} className="inline-flex items-center gap-1.5 text-xs text-ink-soft">
-                <SizePill label={l.label} />
-                {l.meaning}
-              </span>
-            ))}
-            <span className="inline-flex items-center gap-1.5 text-xs text-ink-soft">
-              <span className="text-accent">⭐</span> start here
-            </span>
-          </div>
-          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {buildMenu.map((cat) => (
-              <div
-                key={cat.title}
-                className={`flex flex-col rounded-[var(--radius-card)] border p-6 ${
-                  cat.custom ? "border-line bg-ink text-white" : "border-line bg-surface"
-                }`}
-              >
-                <div className="flex items-center gap-3">
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {buildMenu.map((cat) => {
+              const start = cat.builds.find((b) => b.star);
+              return (
+                <div
+                  key={cat.title}
+                  className={`flex items-start gap-4 rounded-[var(--radius-card)] border border-line p-6 ${
+                    cat.custom ? "bg-ink text-white" : "bg-surface"
+                  }`}
+                >
                   <span
-                    className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${
+                    className={`inline-flex h-11 w-11 flex-none items-center justify-center rounded-xl ${
                       cat.custom ? "bg-white/10 text-white" : "bg-brand-50 text-brand"
                     }`}
                   >
-                    <FunctionIcon slug={cat.iconSlug} className="h-5 w-5" />
+                    <FunctionIcon slug={cat.iconSlug} className="h-[22px] w-[22px]" />
                   </span>
-                  <h3 className={`text-base font-semibold ${cat.custom ? "text-white" : "text-ink"}`}>
-                    {cat.title}
-                  </h3>
-                </div>
-                <p className={`mt-3 text-sm ${cat.custom ? "text-white/60" : "text-muted"}`}>
-                  {cat.subtitle}
-                </p>
-                {cat.custom ? (
-                  <p className="mt-4 text-sm leading-relaxed text-white/80">
-                    Industry-specific automations, custom internal tools, or anything not on this
-                    list. Bring it to your roadmap call and we&apos;ll scope it together.
-                  </p>
-                ) : (
-                  <>
-                    <ul className="mt-4 space-y-2">
-                      {cat.builds.map((b) => (
-                        <li key={b.name} className="flex items-center gap-2.5 text-sm">
-                          <SizePill label={sizeLabel[b.credits]} />
-                          <span className="text-ink-soft">{b.name}</span>
-                          {b.star ? (
-                            <span className="text-accent" aria-label="Start here">
-                              ⭐
-                            </span>
-                          ) : null}
-                        </li>
-                      ))}
-                    </ul>
-                    {cat.more.length > 0 ? (
-                      <details className="group mt-3">
-                        <summary className="cursor-pointer list-none text-xs font-semibold text-brand-600">
-                          + {cat.more.length} more
-                        </summary>
-                        <p className="mt-2 text-xs leading-relaxed text-muted">
-                          {cat.more.join(" · ")}
-                        </p>
-                      </details>
+                  <div>
+                    <h3 className={`text-base font-semibold ${cat.custom ? "text-white" : "text-ink"}`}>
+                      {cat.title}
+                    </h3>
+                    <p className={`mt-1 text-sm leading-relaxed ${cat.custom ? "text-white/65" : "text-muted"}`}>
+                      {cat.subtitle}
+                    </p>
+                    {cat.custom ? (
+                      <p className="mt-2 text-xs leading-relaxed text-white/55">
+                        Anything not on this list — bring it to your roadmap call.
+                      </p>
+                    ) : start ? (
+                      <p className="mt-2 text-xs text-brand-600">
+                        e.g., {start.name}
+                      </p>
                     ) : null}
-                  </>
-                )}
-              </div>
-            ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </Container>
       </section>
@@ -351,23 +373,5 @@ export default function AiHirePage() {
         ctaHref={aiHireCta.pilot}
       />
     </>
-  );
-}
-
-function SizePill({ label }: { label: string }) {
-  const styles: Record<string, string> = {
-    S: "bg-surface-3 text-ink-soft",
-    M: "bg-brand-50 text-brand-700",
-    L: "bg-brand text-white",
-    Custom: "bg-accent-soft text-[#8a5410]",
-  };
-  return (
-    <span
-      className={`inline-flex h-6 min-w-[1.5rem] flex-none items-center justify-center rounded-md px-1.5 text-[11px] font-bold ${
-        styles[label] ?? "bg-surface-3 text-ink-soft"
-      }`}
-    >
-      {label}
-    </span>
   );
 }

@@ -155,3 +155,58 @@ export const aiHireFaqs: Faq[] = [
     a: "If it worked, the $500 credits toward your first month and you pick a plan — or stay light. If it didn't, you walk, no lock-in.",
   },
 ];
+
+// The partnership arc — how the relationship grows over time.
+export const journeyIntro = {
+  headline: "You don't need an AI strategy. You need someone to build it — one step at a time.",
+  sub: "Most businesses we work with start with one job and grow from there. Here's the path, at your pace — you never buy more than the next step.",
+};
+
+export type Phase = {
+  num: string;
+  name: string;
+  headline: string;
+  body: string;
+  get: string;
+  feeling: string;
+};
+
+export const journey: Phase[] = [
+  {
+    num: "01",
+    name: "Audit & Connect",
+    headline: "We find where AI actually pays.",
+    body: "We map how your business runs, wire up your tools and data, and ship your first build — proven on a number you already track.",
+    get: "A map of your best AI opportunities, plus your first build, live.",
+    feeling: "Someone finally gets my business and shows me where to start.",
+  },
+  {
+    num: "02",
+    name: "Build & Operate",
+    headline: "We become the AI team you don't have to hire.",
+    body: "On a simple monthly rhythm we build the next job, then the next — and become your single source of AI truth.",
+    get: "A steady cadence of builds — plus a living AI Playbook of everything we run.",
+    feeling: "I don't chase AI tools anymore — I just ask Reel Axis.",
+  },
+  {
+    num: "03",
+    name: "Unlock & Elevate",
+    headline: "Your team stops doing busywork and starts doing its best work.",
+    body: "With the repetitive work handled, your people move up — and you take on what the business couldn't do before.",
+    get: "Freed-up capacity and new revenue opportunities, built for you.",
+    feeling: "My team does better work — and we're doing things we couldn't before.",
+  },
+  {
+    num: "04",
+    name: "Harden & Future-Proof",
+    headline: "Ready for the agentic future — ahead of your competition.",
+    body: "We get your guardrails, data, and security ready so AI can act safely on your behalf when the shift comes.",
+    get: "A hardened, agent-ready business with governance built in.",
+    feeling: "We're ahead of the agentic shift, not scrambling behind it.",
+  },
+];
+
+export const playbook = {
+  title: "Your living AI Playbook",
+  body: "Every build, your connected tools, your data map, and your AI policies — documented, maintained, and yours. Once we're your source of truth, you never start AI over.",
+};
