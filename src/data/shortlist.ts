@@ -7,43 +7,59 @@ export type Offering = {
   iconSlug: string;
   title: string;
   body: string;
+  cadence: string;
 };
+
+// Ordered so the section reads chronologically — what happens when.
+export const cadenceMeta: { key: string; note: string }[] = [
+  { key: "Week 1", note: "We get you set up and winning on day one." },
+  { key: "Every week", note: "Stay sharp without the firehose." },
+  { key: "Every 2 weeks", note: "Get unstuck on a quick call." },
+  { key: "Always on", note: "There whenever you need it." },
+];
 
 export const shortlistOfferings: Offering[] = [
   {
-    iconSlug: "library",
-    title: "Curated Skill Library",
-    body: "Ready-to-use AI skills, prompts, and SOPs built for small businesses — sales, marketing, intake, operations, finance, and admin. Copy, paste, use. We add to it regularly.",
+    iconSlug: "rocket",
+    title: "Week-One Setup Call",
+    body: "On day one we get on a call and build your first AI skill with you — so you start with something working, not a pile of homework.",
+    cadence: "Week 1",
+  },
+  {
+    iconSlug: "lesson",
+    title: "Weekly Lesson",
+    body: "One short, plain-English lesson each week on how to build and use AI — the model, your context, skills, and connecting your tools.",
+    cadence: "Every week",
   },
   {
     iconSlug: "news",
     title: "Weekly News Digest",
     body: "A 5-minute read of the few AI updates that actually matter for a small business that week. Stay current without drowning in it.",
-  },
-  {
-    iconSlug: "lesson",
-    title: "Weekly Lesson",
-    body: "One short, plain-English lesson on how to build and use AI — the model, your context, skills, and connecting your tools.",
+    cadence: "Every week",
   },
   {
     iconSlug: "call",
     title: "Biweekly Office Hours",
     body: "A 20-minute call every two weeks to get unstuck and decide what to do next.",
+    cadence: "Every 2 weeks",
+  },
+  {
+    iconSlug: "library",
+    title: "Skills & Plug-ins Library",
+    body: "Ready-to-use AI skills and plug-ins built for small businesses — sales, marketing, intake, operations, finance, and admin. Copy, connect, and use. We add to it regularly.",
+    cadence: "Always on",
   },
   {
     iconSlug: "chat",
     title: "Async Team Access",
     body: "Ask our team questions anytime in the members' channel between calls.",
+    cadence: "Always on",
   },
   {
     iconSlug: "brain",
     title: "Your Notion Knowledge Base",
     body: "A personal AI “brain” we set up for you to keep your skills, prompts, and notes in one place.",
-  },
-  {
-    iconSlug: "rocket",
-    title: "Week-One Setup Call",
-    body: "On day one we get on a call and build your first AI skill with you — so you start with something working, not a pile of homework.",
+    cadence: "Always on",
   },
 ];
 

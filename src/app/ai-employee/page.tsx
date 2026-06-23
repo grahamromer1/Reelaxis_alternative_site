@@ -13,9 +13,11 @@ import {
   plans,
   flexibilityOptions,
   buildMenu,
+  creditLegend,
   aiEmployeeFaqs,
   bookCallHref,
   auditHref,
+  type CreditCost,
 } from "@/data/aiEmployee";
 
 export const metadata: Metadata = {
@@ -298,32 +300,85 @@ export default function AiEmployeePage() {
           <SectionHeader
             eyebrow="The menu"
             title="What can you build with credits?"
-            description="Every business is different, so you get a flexible AI Build Menu. During your monthly roadmap call we help you choose the highest-value use of your credits."
+            description="Pick by the result you want — every build shows its credit cost, and a ⭐ marks where most businesses start. On your monthly roadmap call we help you choose."
           />
-          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+          {/* Legend */}
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 rounded-xl border border-line bg-surface-2 px-4 py-3">
+            {creditLegend.map((l) => (
+              <span key={l.tag} className="inline-flex items-center gap-1.5 text-xs text-ink-soft">
+                <CreditPill credits={l.tag} />
+                {l.meaning}
+              </span>
+            ))}
+            <span className="inline-flex items-center gap-1.5 text-xs text-ink-soft">
+              <span className="text-accent">⭐</span> start here
+            </span>
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {buildMenu.map((cat) => (
               <div
                 key={cat.title}
-                className="flex flex-col rounded-[var(--radius-card)] border border-line bg-surface p-6"
+                className={`flex flex-col rounded-[var(--radius-card)] border p-6 ${
+                  cat.custom ? "border-line bg-ink text-white" : "border-line bg-surface"
+                }`}
               >
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand">
+                  <span
+                    className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${
+                      cat.custom ? "bg-white/10 text-white" : "bg-brand-50 text-brand"
+                    }`}
+                  >
                     <FunctionIcon slug={cat.iconSlug} className="h-5 w-5" />
                   </span>
-                  <h3 className="text-base font-semibold text-ink">{cat.title}</h3>
+                  <h3 className={`text-base font-semibold ${cat.custom ? "text-white" : "text-ink"}`}>
+                    {cat.title}
+                  </h3>
                 </div>
-                <p className="mt-3 text-sm text-muted">{cat.blurb}</p>
-                <ul className="mt-4 grid grid-cols-1 gap-1.5">
-                  {cat.builds.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-sm text-ink-soft">
-                      <span className="mt-1.5 h-1 w-1 flex-none rounded-full bg-brand-500" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
+                <p className={`mt-3 text-sm ${cat.custom ? "text-white/60" : "text-muted"}`}>
+                  {cat.subtitle}
+                </p>
+
+                {cat.custom ? (
+                  <p className="mt-4 text-sm leading-relaxed text-white/80">
+                    Industry-specific automations, custom internal tools, or anything not on this
+                    list. Bring it to your roadmap call and we&apos;ll scope it together.
+                  </p>
+                ) : (
+                  <>
+                    <ul className="mt-4 space-y-2">
+                      {cat.builds.map((b) => (
+                        <li key={b.name} className="flex items-center gap-2.5 text-sm">
+                          <CreditPill credits={b.credits} />
+                          <span className="text-ink-soft">{b.name}</span>
+                          {b.star ? (
+                            <span className="text-accent" aria-label="Start here">
+                              ⭐
+                            </span>
+                          ) : null}
+                        </li>
+                      ))}
+                    </ul>
+                    {cat.more.length > 0 ? (
+                      <details className="group mt-3">
+                        <summary className="cursor-pointer list-none text-xs font-semibold text-brand-600">
+                          + {cat.more.length} more
+                        </summary>
+                        <p className="mt-2 text-xs leading-relaxed text-muted">
+                          {cat.more.join(" · ")}
+                        </p>
+                      </details>
+                    ) : null}
+                  </>
+                )}
               </div>
             ))}
           </div>
+          <p className="mt-6 text-xs text-muted">
+            Credit costs are planning estimates. Final scope is confirmed with Reel Axis before work
+            begins.
+          </p>
         </Container>
       </section>
 
@@ -354,5 +409,22 @@ export default function AiEmployeePage() {
         ctaHref={auditHref}
       />
     </>
+  );
+}
+
+// Credit pill, shaded light -> dark as the credit cost increases.
+function CreditPill({ credits }: { credits: CreditCost }) {
+  const styles: Record<CreditCost, string> = {
+    "1": "bg-surface-3 text-ink-soft",
+    "3": "bg-brand-50 text-brand-700",
+    "6": "bg-brand text-white",
+    Custom: "bg-accent-soft text-[#8a5410]",
+  };
+  return (
+    <span
+      className={`inline-flex h-6 min-w-[1.5rem] flex-none items-center justify-center rounded-md px-1.5 text-[11px] font-bold ${styles[credits]}`}
+    >
+      {credits}
+    </span>
   );
 }

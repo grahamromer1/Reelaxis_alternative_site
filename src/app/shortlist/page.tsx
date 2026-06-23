@@ -8,6 +8,7 @@ import { CTASection } from "@/components/CTASection";
 import { FunctionIcon } from "@/components/FunctionIcon";
 import {
   shortlistOfferings,
+  cadenceMeta,
   shortlistPricing,
   ladder,
   shortlistFaqs,
@@ -56,32 +57,44 @@ export default function ShortlistPage() {
         </Container>
       </section>
 
-      {/* What you get */}
+      {/* What you get — chronological by cadence */}
       <section className="bg-surface-2 py-16 sm:py-20">
         <Container>
           <SectionHeader
             eyebrow="What you get"
-            title="Everything in the membership"
-            description="Seven things, one simple membership."
+            title="How it works — from day one"
+            description="Everything in the membership, in the order you'll actually use it."
           />
-          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {shortlistOfferings.map((o, i) => (
-              <div
-                key={o.title}
-                className="flex flex-col rounded-[var(--radius-card)] border border-line bg-surface p-6"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-brand-50 text-brand">
-                    <FunctionIcon slug={o.iconSlug} className="h-[22px] w-[22px]" />
-                  </span>
-                  <span className="text-xs font-bold text-muted/70">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+          <div className="mt-10 space-y-10">
+            {cadenceMeta.map((group) => {
+              const items = shortlistOfferings.filter((o) => o.cadence === group.key);
+              if (items.length === 0) return null;
+              return (
+                <div key={group.key}>
+                  <div className="mb-4 flex items-center gap-3">
+                    <span className="inline-flex flex-none items-center rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white">
+                      {group.key}
+                    </span>
+                    <span className="text-sm text-muted">{group.note}</span>
+                    <span aria-hidden="true" className="h-px flex-1 bg-line" />
+                  </div>
+                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    {items.map((o) => (
+                      <div
+                        key={o.title}
+                        className="flex flex-col rounded-[var(--radius-card)] border border-line bg-surface p-6"
+                      >
+                        <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand">
+                          <FunctionIcon slug={o.iconSlug} className="h-[22px] w-[22px]" />
+                        </div>
+                        <h3 className="mt-4 text-lg font-semibold text-ink">{o.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-ink-soft">{o.body}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-ink">{o.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{o.body}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </Container>
       </section>

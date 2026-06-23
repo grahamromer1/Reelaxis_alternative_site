@@ -176,129 +176,117 @@ export const flexibilityOptions: { title: string; price: string; body: string }[
   },
 ];
 
+export type CreditCost = "1" | "3" | "6" | "Custom";
+export type Build = { name: string; credits: CreditCost; star?: boolean };
 export type BuildCategory = {
   iconSlug: string;
   title: string;
-  blurb: string;
-  builds: string[];
+  subtitle: string; // plain-language "what you get"
+  builds: Build[]; // ~4 shown up front; first with star = "Start here"
+  more: string[]; // teaser of the rest
+  custom?: boolean; // the open-ended "something specific" card
 };
+
+// Legend rows for the credit pills, shaded light -> dark by size.
+export const creditLegend: { tag: CreditCost; meaning: string }[] = [
+  { tag: "1", meaning: "small asset or improvement" },
+  { tag: "3", meaning: "useful business build" },
+  { tag: "6", meaning: "larger working system" },
+  { tag: "Custom", meaning: "bigger project, quoted separately" },
+];
 
 export const buildMenu: BuildCategory[] = [
   {
     iconSlug: "marketing",
-    title: "Marketing & Visibility",
-    blurb: "Help your business get found, understood, and trusted.",
+    title: "Marketing & visibility",
+    subtitle: "Get found, understood, and trusted.",
     builds: [
-      "AI visibility audit",
-      "Website content cleanup",
-      "Service & location pages",
-      "FAQ pages",
-      "Google Business Profile content",
-      "Review response library",
-      "AI-ready website structure",
-      "Content roadmap",
+      { name: "See how AI assistants describe you", credits: "1", star: true },
+      { name: "Clean up your website content", credits: "3" },
+      { name: "Service & location pages", credits: "3" },
+      { name: "An AI-ready website structure", credits: "6" },
     ],
+    more: ["Google Business content", "review reply library", "content roadmap"],
   },
   {
     iconSlug: "sales",
-    title: "Sales & Lead Generation",
-    blurb: "Help your team find, qualify, and follow up with better leads.",
+    title: "Sales & lead generation",
+    subtitle: "Find, qualify, and follow up with leads.",
     builds: [
-      "Prospect lists",
-      "LinkedIn / email outreach campaigns",
-      "Lead scoring",
-      "Sales scripts",
-      "Lost-lead reactivation",
-      "Referral campaigns",
-      "CRM tagging plans",
-      "Outbound prospecting engine",
+      { name: "Build a list of ideal prospects", credits: "3", star: true },
+      { name: "Win back leads that went cold", credits: "3" },
+      { name: "Email & LinkedIn outreach campaign", credits: "3" },
+      { name: "An always-on outbound engine", credits: "6" },
     ],
+    more: ["lead scoring", "sales scripts", "CRM tagging plan"],
   },
   {
     iconSlug: "customer-service",
-    title: "Customer Intake & Service",
-    blurb: "Respond faster and handle inquiries more consistently.",
+    title: "Customer intake & service",
+    subtitle: "Respond faster and more consistently.",
     builds: [
-      "Intake questionnaire & form",
-      "Lead qualification workflow",
-      "Missed-lead follow-up",
-      "Quote request flow",
-      "Customer FAQ",
-      "Response template library",
-      "AI intake assistant",
-      "Booking / CRM routing",
+      { name: "Smart intake form & questionnaire", credits: "3", star: true },
+      { name: "Never miss a new lead", credits: "3" },
+      { name: "Customer FAQ & response library", credits: "1" },
+      { name: "An AI intake assistant", credits: "6" },
     ],
+    more: ["quote request flow", "booking / CRM routing"],
   },
   {
     iconSlug: "operations",
-    title: "Operations & Admin",
-    blurb: "Reduce repetitive internal work.",
+    title: "Operations & admin",
+    subtitle: "Cut repetitive internal work.",
     builds: [
-      "SOPs & checklists",
-      "Meeting summary templates",
-      "Email triage",
-      "Document summary systems",
-      "Proposal drafting workflows",
-      "Weekly status reports",
-      "Vendor quote comparisons",
-      "Admin automation workflows",
+      { name: "SOPs & checklists for recurring tasks", credits: "1", star: true },
+      { name: "Auto-summarize your meetings", credits: "1" },
+      { name: "Tame your inbox with email triage", credits: "3" },
+      { name: "Proposal drafting workflow", credits: "6" },
     ],
+    more: ["weekly status reports", "vendor quote comparisons", "admin automation"],
   },
   {
     iconSlug: "finance",
-    title: "Finance, Reporting & Data",
-    blurb: "Clean up messy information and improve visibility.",
+    title: "Finance, reporting & data",
+    subtitle: "Clean up info and see what matters.",
     builds: [
-      "Spreadsheet cleanup",
-      "Invoice review templates",
-      "KPI dashboard",
-      "CRM cleanup plan",
-      "Recurring reporting workflow",
-      "Report summary templates",
-      "Data tagging & enrichment",
-      "Light reporting setup",
+      { name: "Clean up a messy spreadsheet", credits: "1", star: true },
+      { name: "A simple KPI dashboard", credits: "3" },
+      { name: "Clean up your CRM data", credits: "3" },
+      { name: "Recurring reporting workflow", credits: "6" },
     ],
+    more: ["invoice review templates", "report summaries", "data tagging & enrichment"],
   },
   {
-    iconSlug: "admin",
-    title: "Company Knowledge Base",
-    blurb: "Turn scattered company knowledge into a usable internal system.",
+    iconSlug: "library",
+    title: "Company knowledge base",
+    subtitle: "One place for what your team knows.",
     builds: [
-      "Company brain starter",
-      "Google Drive cleanup",
-      "SOP & sales-script library",
-      "Internal FAQ & onboarding guide",
-      "Proposal language library",
-      "Support answer bank",
-      "Internal AI assistant",
-      "Knowledge base maintenance",
+      { name: "Company brain starter", credits: "6", star: true },
+      { name: "Organize your Google Drive", credits: "3" },
+      { name: "SOP & sales-script library", credits: "3" },
+      { name: "An internal AI assistant", credits: "6" },
     ],
+    more: ["internal FAQ & onboarding guide", "proposal language library", "support answer bank"],
   },
   {
-    iconSlug: "leadership-reporting",
-    title: "Team Training & Adoption",
-    blurb: "Help your team use AI practically and safely.",
+    iconSlug: "lesson",
+    title: "Team training & adoption",
+    subtitle: "Get your team using AI safely.",
     builds: [
-      "Prompt guide",
-      "Safe AI use checklist",
-      "Role-specific AI tips",
-      "Team training session",
-      "Department playbook",
-      "Approved tools list",
-      "AI use policy",
-      "New-employee AI onboarding",
+      { name: "A prompt guide for your team", credits: "1", star: true },
+      { name: "Safe AI use checklist & policy", credits: "1" },
+      { name: "Live team training session", credits: "3" },
+      { name: "Role-specific department playbook", credits: "3" },
     ],
+    more: ["approved tools list", "role-specific tips", "new-hire AI onboarding"],
   },
   {
     iconSlug: "custom",
     title: "Something specific to your business",
-    blurb: "Have a bottleneck or workflow unique to your business? Bring it to your roadmap call.",
-    builds: [
-      "A workflow unique to your business",
-      "Industry-specific automations",
-      "Custom internal tools",
-      "Anything not on this list — we'll scope it",
-    ],
+    subtitle: "A bottleneck unique to you.",
+    custom: true,
+    builds: [],
+    more: [],
   },
 ];
 
