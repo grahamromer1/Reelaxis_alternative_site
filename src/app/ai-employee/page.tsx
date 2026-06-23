@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { Container } from "@/components/Container";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -39,6 +40,25 @@ export default function AiEmployeePage() {
           Explore AI Build Credits
         </CTAButton>
       </Hero>
+
+      {/* Start-smaller banner → The Shortlist */}
+      <section className="border-b border-line bg-brand-50">
+        <Container>
+          <div className="flex flex-col items-center justify-between gap-3 py-4 text-center sm:flex-row sm:text-left">
+            <p className="text-sm text-ink-soft">
+              <span className="font-semibold text-ink">Not ready for done-for-you?</span>{" "}
+              Start with <span className="font-semibold text-brand">The Shortlist</span> — our
+              $250/mo membership to get capable with AI yourself.
+            </p>
+            <Link
+              href="/shortlist"
+              className="inline-flex flex-none items-center gap-1 rounded-full bg-white px-4 py-2 text-sm font-semibold text-brand ring-1 ring-inset ring-line transition hover:ring-brand-500"
+            >
+              Explore The Shortlist →
+            </Link>
+          </div>
+        </Container>
+      </section>
 
       {/* Problem */}
       <section className="py-16 sm:py-20">

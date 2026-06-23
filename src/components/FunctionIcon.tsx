@@ -73,6 +73,58 @@ export function FunctionIcon({ slug, className = "h-5 w-5" }: { slug: string; cl
         <path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8Z" />
       </>
     ),
+    // Library — open book
+    library: (
+      <>
+        <path d="M12 6.5c-2.2-1.4-4.8-1.4-7 0v11c2.2-1.4 4.8-1.4 7 0 2.2-1.4 4.8-1.4 7 0v-11c-2.2-1.4-4.8-1.4-7 0Z" />
+        <path d="M12 6.5v11" />
+      </>
+    ),
+    // News — newspaper
+    news: (
+      <>
+        <path d="M4 5h13v14H6a2 2 0 0 1-2-2V5Z" />
+        <path d="M17 9h3v8a2 2 0 0 1-2 2" />
+        <path d="M7 8h6M7 11h6M7 14h4" />
+      </>
+    ),
+    // Lesson — mortarboard
+    lesson: (
+      <>
+        <path d="M2.5 9 12 5l9.5 4-9.5 4-9.5-4Z" />
+        <path d="M7 11.2V15c0 1.1 2.2 2 5 2s5-.9 5-2v-3.8" />
+        <path d="M21.5 9v4.5" />
+      </>
+    ),
+    // Call — video / office hours
+    call: (
+      <>
+        <rect x="3" y="6.5" width="12" height="11" rx="2" />
+        <path d="M15 10.5l6-3v9l-6-3" />
+      </>
+    ),
+    // Chat — speech bubble
+    chat: (
+      <>
+        <path d="M5 5h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-9l-4 3v-3H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" />
+        <path d="M8.5 10h.01M12 10h.01M15.5 10h.01" />
+      </>
+    ),
+    // Brain — knowledge base
+    brain: (
+      <>
+        <path d="M9.5 5a2.7 2.7 0 0 0-2.6 2 2.7 2.7 0 0 0-1.4 4.6A2.7 2.7 0 0 0 7 16.7 2.6 2.6 0 0 0 9.5 19 1.5 1.5 0 0 0 11 17.5v-11A1.5 1.5 0 0 0 9.5 5Z" />
+        <path d="M14.5 5a2.7 2.7 0 0 1 2.6 2 2.7 2.7 0 0 1 1.4 4.6A2.7 2.7 0 0 1 17 16.7 2.6 2.6 0 0 1 14.5 19 1.5 1.5 0 0 1 13 17.5v-11A1.5 1.5 0 0 1 14.5 5Z" />
+      </>
+    ),
+    // Rocket — week-one setup
+    rocket: (
+      <>
+        <path d="M12 3c2.6 1.7 4 4.7 4 8 0 1.5-.3 2.8-.8 3.8H8.8C8.3 13.8 8 12.5 8 11c0-3.3 1.4-6.3 4-8Z" />
+        <circle cx="12" cy="9.5" r="1.3" />
+        <path d="M8.6 15.5 6.5 19l3.2-1.1M15.4 15.5 17.5 19l-3.2-1.1" />
+      </>
+    ),
   };
 
   return (
